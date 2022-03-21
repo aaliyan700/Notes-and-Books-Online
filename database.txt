@@ -1,0 +1,39 @@
+Create database notes
+use abc
+create table signup
+(
+id varchar(20) primary key,
+firstname varchar(20),
+lastname varchar(20),
+age int,
+email varchar(50),
+password varchar(20),
+gender varchar(10)
+)
+drop table signup
+select * from signup
+
+create table courses(
+coursecode varchar(10) ,
+coursedis varchar(10),
+coursetitle varchar(20),
+semester varchar(8),
+Primary key(coursecode,coursedis),
+id varchar(20),
+FOREIGN KEY (id) REFERENCES signup(id) ON DELETE CASCADE
+)
+create table notes(
+notestitle varchar(50),
+notesfile varchar(200),
+coursecode varchar(10) ,
+coursedis varchar(10),
+id varchar(20),
+FOREIGN KEY (id) REFERENCES signup(id)ON DELETE CASCADE
+)
+
+insert into courses 
+	values('aca','dsad','das','2nd',		
+		(SELECT id FROM signup WHERE id='aaliyanhafeez35')
+	)
+
+SELECT * FROM courses
